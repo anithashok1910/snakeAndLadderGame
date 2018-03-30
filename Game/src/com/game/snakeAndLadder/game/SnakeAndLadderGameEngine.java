@@ -5,9 +5,7 @@ import com.game.snakeAndLadder.game.components.GameBoard;
 import com.game.snakeAndLadder.game.components.Player;
 import com.game.snakeAndLadder.game.components.PlayerStatus;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -56,11 +54,11 @@ public class SnakeAndLadderGameEngine {
                                 break gameloop;
                             }
                         }else{
-                            if(diceValue == 6)
+                            if(diceValue == Dice.MAXIMUM_DICE_VALUE)
                                 player.setPlayerStatus(PlayerStatus.PLAYING);
                         }
                         System.out.println(player);
-                    }while(diceValue == 6 && player.getPlayerStatus() == PlayerStatus.PLAYING);
+                    }while(diceValue == Dice.MAXIMUM_DICE_VALUE && player.getPlayerStatus() == PlayerStatus.PLAYING);
 
             }
         }
@@ -95,12 +93,12 @@ public class SnakeAndLadderGameEngine {
     }
 
     private Boolean hasPlayerWon(Integer position){
-        return position.equals(99);
+        return position.equals(GameBoard.LAST_POSITION);
     }
 
     private Integer updatePlayerIndexAfterMove(Integer currentIndex, Integer diceValue){
-        if((currentIndex + diceValue) > 99 ){
-            return 99 - (diceValue - (99 - currentIndex));
+        if((currentIndex + diceValue) > GameBoard.LAST_POSITION ){
+            return GameBoard.LAST_POSITION - (diceValue - (GameBoard.LAST_POSITION - currentIndex));
         }else {
             return currentIndex + diceValue;
         }

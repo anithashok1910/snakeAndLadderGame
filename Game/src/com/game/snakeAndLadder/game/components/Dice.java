@@ -6,13 +6,13 @@ public class Dice {
 
     private Integer diceValue;
 
-    private final Integer minimumDiceValue = 1;
+    public final static Integer MINIMUM_DICE_VALUE = 1;
 
-    private final Integer maximumDiceValue = 6;
+    public final static Integer MAXIMUM_DICE_VALUE = 6;
 
     public Integer getDiceValue() {
         Random randomNumber = new Random();
-        diceValue = minimumDiceValue + randomNumber.nextInt(maximumDiceValue);
+        diceValue = MINIMUM_DICE_VALUE + randomNumber.nextInt(MAXIMUM_DICE_VALUE);
         return diceValue;
     }
 
